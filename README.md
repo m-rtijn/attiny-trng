@@ -3,7 +3,16 @@ attiny-trng
 
 ATTiny85 proof of concept implementation of a True Random Number Generator (TRNG).
 
-*WARNING: THIS PROJECT IS NOT TO BE USED FOR ACTUAL CRYPTOGRAPHICAL PURPOSES.*
+**WARNING: THIS PROJECT IS NOT TO BE USED FOR ACTUAL CRYPTOGRAPHICAL PURPOSES.**
+
+How it should work and why it doesn't
+-------------------------------------
+
+Using two unconnected analog input pins, these floating pins can be used as a
+source of random data. However, this raw data can't be immediately used. The data
+has to be mixed (RFC 4086 section 5). I wanted to collect an array of read values
+and compute a hash from this data. But the MD5 hash library I found is not
+compatible with the ATTiny85. At which point I stopped working on this project.
 
 Resources
 ---------
@@ -14,6 +23,9 @@ https://tools.ietf.org/html/rfc4086
 
 NeuG, a True Random Number Generator Implementation
 https://www.gniibe.org/memo/development/gnuk/rng/neug.html
+
+ArduinoMD5, an implementation of the MD5 hash for Arduino
+https://github.com/tzikis/ArduinoMD5/
 ```
 
 License
