@@ -23,7 +23,11 @@
 
 #define rx_pin 0
 #define tx_pin 1
-#define ai0 A3 // analog input
+
+/*
+ * Unconnected (floating) analog input pins
+ */
+#define ai0 A3
 #define ai1 A2
 
 SoftwareSerial serial(rx_pin, tx_pin);
@@ -39,25 +43,30 @@ void setup() {
 }
 
 void loop() {
-    unsigned long v = 0;
-    for (int i = 0; i < 2; i++) {
-        serial.println("read");
-        int raw0 = analogRead(ai0);
-        int raw1 = analogRead(ai1);
-        int x = 0;
+    byte rbytes[16];
+    for (int i = 0; i < 16; i++) {
+        int raw0 = 0;
+        int raw1 = 0;
+        byte x = 0;
+
+        serial.println("Read");
+        raw0 = analogRead(ai0);
+        raw1 = analogRead(ai1);
         x = raw0 ^ raw1; // bitwise xor
 
-        /* The 10-bit ADC gives us only 10 random bits per read, move
-        * these to be the most significant
-        */
-        x = x << 10;
+        serial.print("raw0\t");
+        serial.println(raw0, BIN);
+        serial.print("raw1\t");
+        serial.println(raw1, BIN);
+        serial.print("x\t");
         serial.println(x, BIN);
-        v = (v + x) << 10;
-        serial.println(v, BIN);
-        delay(250);
+        rbytes[i] = x;
     }
-    serial.println(v, BIN);
-    serial.println(v, DEC);
-    serial.println("New round");
-    v = 0;
+
+    for (int i = 0; i < 16; i++) {
+        serial.print(i, DEC);
+        serial.print('\t');
+        serial.println(rbytes[i], BIN);
+    }
+    delay(250);
 }
