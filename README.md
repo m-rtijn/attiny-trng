@@ -3,7 +3,7 @@ attiny-trng
 
 ATTiny85 proof of concept implementation of a True Random Number Generator (TRNG).
 
-WARNING: THIS PROJECT IS NOT TO BE USED FOR ACTUAL CRYPTOGRAPHICAL PURPOSES.
+*WARNING: THIS PROJECT IS NOT TO BE USED FOR ACTUAL CRYPTOGRAPHICAL PURPOSES.*
 
 Resources
 ---------
@@ -19,6 +19,7 @@ https://www.gniibe.org/memo/development/gnuk/rng/neug.html
 License
 -------
 
+```
 Copyright (c) 2017 Martijn
 
 attiny-trng is free software: you can redistribute it and/or modify
@@ -33,3 +34,4 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with attiny-trng.  If not, see <http://www.gnu.org/licenses/>.
+```
