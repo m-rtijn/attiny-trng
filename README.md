@@ -14,6 +14,14 @@ has to be mixed (RFC 4086 section 5). I wanted to collect an array of read value
 and compute a hash from this data. But the MD5 hash library I found is not
 compatible with the ATTiny85. At which point I stopped working on this project.
 
+Solutions
+---------
+
+Because of its processing limitations, it's not possible (at least, for me) to implement
+a complete TRNG on an ATTiny85. Instead, the processing of the raw data from the ATTiny85's
+ADC will have to happen on a host computer using a driver which reads the raw data from
+the ATTiny85 via a serial interface.
+
 Resources
 ---------
 
