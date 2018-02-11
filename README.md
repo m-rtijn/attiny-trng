@@ -22,6 +22,12 @@ a complete TRNG on an ATTiny85. Instead, the processing of the raw data from the
 ADC will have to happen on a host computer using a driver which reads the raw data from
 the ATTiny85 via a serial interface.
 
+Other notes
+-----------
+
+- Once there there is a (somewhat) working proof of concept, `ent` can be used to measure
+    how random the output actually is.
+
 Resources
 ---------
 
@@ -34,6 +40,9 @@ https://www.gniibe.org/memo/development/gnuk/rng/neug.html
 
 ArduinoMD5, an implementation of the MD5 hash for Arduino
 https://github.com/tzikis/ArduinoMD5/
+
+ENT: A Pseudorandom Number Sequence Test Program
+https://www.fourmilab.ch/random/
 ```
 
 License
