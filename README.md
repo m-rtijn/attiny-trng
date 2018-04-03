@@ -22,6 +22,16 @@ a complete TRNG on an ATTiny85. Instead, the processing of the raw data from the
 ADC will have to happen on a host computer using a driver which reads the raw data from
 the ATTiny85 via a serial interface.
 
+Raw data processing
+-------------------
+
+The raw readings from the floating analog input pins are 10-bit values. These
+readings are stored in 16-bit signed integers. To get a variable with only raw
+random bits from the input pin, the `lowByte` function is used to only use
+the lowest 8 bits from this integer. Thus, per reading, only 8 of the 10 bits
+are used. This data is then sent to a computer over serial, which has to
+process the readings and put them into a hash function.
+
 Other notes
 -----------
 
@@ -49,7 +59,7 @@ License
 -------
 
 ```
-Copyright (c) 2017 Martijn
+Copyright (c) 2017, 2018 Martijn
 
 attiny-trng is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
